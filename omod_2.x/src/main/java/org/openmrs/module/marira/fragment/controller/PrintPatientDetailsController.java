@@ -34,7 +34,7 @@ public class PrintPatientDetailsController extends ReportsControllerBase {
 		}
 
 		HashMap<String, Object> params = new HashMap<String, Object>();
-		params.put("PersonID", personId);
+		params.put("personId", personId);
 
 		reportId = ModuleSettings.loadSettings().getPatientsDetailsReportId();
 		return renderReport(reportId, params, "Patient Details Report - " + temp, response);
