@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module configVersion="1.2">
+	
+	<!-- Base Module Properties -->
+	<id>${project.parent.artifactId}</id>
+	<name>${project.parent.name}</name>
+	<version>${project.parent.version}</version>
+	<package>${project.parent.groupId}.${project.parent.artifactId}</package>
+	<author>OpenHMIS</author>
+	<description>
+			${project.parent.description}
+	</description>
+	<updateURL>https://modules.openmrs.org/modules/download/${project.parent.artifactId}/update.rdf</updateURL>
+	<require_version>${openMRSVersion}</require_version>
+
+	<aware_of_modules>
+		<aware_of_module version="2.8">org.openmrs.module.idgen</aware_of_module>
+		<aware_of_module version="${uiframeworkVersion}">org.openmrs.module.uiframework</aware_of_module>
+		<aware_of_module version="${appframeworkVersion}">org.openmrs.module.appframework</aware_of_module>
+		<aware_of_module version="${providerManagementVersion}">org.openmrs.module.providermanagement</aware_of_module>
+		<aware_of_module version="1.7">org.openmrs.module.uicommons</aware_of_module>
+	</aware_of_modules>
+
+	<require_modules>
+		<require_module version="2.11">org.openmrs.module.webservices.rest</require_module>
+		<require_module version="3.0">org.openmrs.module.openhmis.commons</require_module>
+		<require_module version="2.3">org.openmrs.module.openhmis.backboneforms</require_module>
+		<require_module version="1.5.6">org.openmrs.module.jasperreport</require_module>odule>
+	</require_modules>
+
+	<activator>${project.parent.groupId}.${project.parent.artifactId}.ModuleActivator</activator>
+
+	<!--Global Properties-->
+	<globalProperty>
+		<property>${project.parent.artifactId}.patientDetailsReportId</property>
+		<description>ID of the report to be used to get the patient details</description>
+	</globalProperty>
+
+	<!-- Extensions -->
+	<!-- AOP
+	<advice>
+		<point>org.openmrs.api.FormService</point>
+		<class>@MODULE_PACKAGE@.advice.DuplicateFormAdvisor</class>
+	</advice>
+	 /AOP -->
+	
+	
+	<!-- Required Privileges -->
+	<!--App Privileges for openmrs 2.0x-->
+	<privilege>
+		<name>App: Access Marira Specific Functionality</name>
+		<description>Able to access marira specific functionality in openmrs 2.x</description>
+	</privilege>
+	<privilege>
+		<name>Task: Print Patient Details</name>
+		<description>Print patient deatils from the 2.X UI</description>
+	</privilege>
+
+	<!-- Required Global Properties 
+	<globalProperty>
+		<property>@MODULE_ID@.someProperty</property>
+		<defaultValue></defaultValue>
+		<description>
+			A description of the global property goes here.  The description
+			should explain enough for administrators to understand the purpose
+			and possible values for the global property.
+		</description>
+	</globalProperty>
+	/Required Global Properties -->
+	
+	<!--
+	<dwr>
+		<allow>
+			<create creator="new" javascript="DWRFormEntryService">
+				<param name="class" value="org.openmrs.module.@MODULE_ID@.web.DWRFormEntryService"/>
+				<include method="enterForm"/>
+			</create>
+		</allow>
+
+		<signatures>
+			<![CDATA[
+			import @MODULE_PACKAGE@.web.DWRFormEntryService;
+			DWRFormEntryService.enterForm(Integer patientId, Integer formId, boolean useEncounter, List<String> fields);
+			]]>
+		</signatures>	
+	</dwr>
+	-->
+	
+	<!-- Servlets -->
+	<!-- Accessed through the url /pageContext()/moduleServlet/<moduleId>/<servlet-name> 
+	<servlet>
+		<servlet-name>formDownload</servlet-name>
+		<servlet-class>@MODULE_PACKAGE@.web.FormDownloadServlet</servlet-class>
+	</servlet>
+	-->
+	<!-- /Servlets -->
+	
+	
+	<!-- Internationalization -->
+	<!-- All message codes should start with @MODULE_ID@.* -->
+	<messages>
+		<lang>en</lang>
+		<file>messages.properties</file>
+	</messages>
+	<messages>
+		<lang>fr</lang>
+		<file>messages_fr.properties</file>
+	</messages>
+	<messages>
+		<lang>es</lang>
+		<file>messages_es.properties</file>
+	</messages>
+	<!-- /Internationalization -->
+	
+</module>
+

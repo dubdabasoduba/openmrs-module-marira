@@ -1,0 +1,10 @@
+[
+	{
+		"id": "${project.parent.artifactId}",
+		"description": "Module to provide functionality specific to marira",
+		"order": 20,
+		"extensions": [
+
+		]
+	}
+]
