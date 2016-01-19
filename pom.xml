@@ -13,12 +13,12 @@
 		<repository>
 			<id>openmrs-repo</id>
 			<name>Modules</name>
-			<url>http://mavenrepo.openhmisafrica.org/content/repositories/releases/</url>
+			<url>http://mavenrepo.openmrs.org/nexus/content/repositories/modules</url>
 		</repository>
 		<snapshotRepository>
 			<id>openhmis-repo</id>
 			<name>Snapshots</name>
-			<url>http://mavenrepo.openhmisafrica.org/content/repositories/snapshots</url>
+			<url>http://mavenrepo.openhmisafrica.org/content/repositories/releases</url>
 		</snapshotRepository>
 	</distributionManagement>
 
