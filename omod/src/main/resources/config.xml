@@ -56,6 +56,10 @@
 		<name>App: Print Patient Details</name>
 		<description>Print patient deatils from the 2.X UI</description>
 	</privilege>
+	<privilege>
+		<name>App: Edit Visit</name>
+		<description>Able to access old patient search page to edit visit</description>
+	</privilege>
 
 	<!-- Required Global Properties 
 	<globalProperty>
