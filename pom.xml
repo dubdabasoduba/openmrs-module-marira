@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.openmrs.module</groupId>
 	<artifactId>marira</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<packaging>pom</packaging>
 	<name>OpenHMIS Marira Module</name>
 	<description>Provides functionality only specific to the marira clinic.</description>
@@ -11,9 +11,9 @@
 
 	<distributionManagement>
 		<repository>
-			<id>openmrs-repo</id>
+			<id>openhmis-repo</id>
 			<name>Modules</name>
-			<url>http://mavenrepo.openmrs.org/nexus/content/repositories/modules/</url>
+			<url>http://mavenrepo.openhmisafrica.org/content/repositories/releases</url>
 		</repository>
 		<snapshotRepository>
 			<id>openhmis-repo</id>
@@ -37,7 +37,7 @@
 		<connection>scm:git:git@github.com:OpenHMIS/openmrs-module-marira.git</connection>
 		<developerConnection>scm:git:git@github.com:OpenHMIS/openmrs-module-marira.git</developerConnection>
 		<url>scm:git:git@github.com:OpenHMIS/openmrs-module-marira.git</url>
-		<tag>HEAD</tag>
+		<tag>v1.0.1</tag>
 	</scm>
 
 	<modules>
@@ -110,7 +110,7 @@
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>openhmis.commons-api</artifactId>
-				<version>3.1.0</version>
+				<version>3.1.2</version>
 				<type>jar</type>
 				<scope>provided</scope>
 			</dependency>
@@ -118,7 +118,7 @@
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>openhmis.commons-api</artifactId>
-				<version>3.1.0</version>
+				<version>3.1.2</version>
 				<type>test-jar</type>
 				<scope>test</scope>
 			</dependency>
@@ -134,7 +134,7 @@
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>openhmis.commons-omod</artifactId>
-				<version>3.1.0</version>
+				<version>3.1.2</version>
 				<type>jar</type>
 				<scope>provided</scope>
 			</dependency>
@@ -193,7 +193,7 @@
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>jasperreport-api</artifactId>
-				<version>1.5.6</version>
+				<version>1.5.7</version>
 				<type>jar</type>
 				<scope>provided</scope>
 			</dependency>

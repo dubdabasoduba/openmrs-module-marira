@@ -3,10 +3,10 @@
 		"id": "${project.parent.artifactId}.printDetailsLink",
 		"extensionPointId": "patientDashboard.overallActions",
 		"type": "link",
-		"label": "openhmis.cashier.admin.print",
+		"label": "marira.dashboard.print.patientDetails",
 		"url": "module/marira/patientReport.page?personId={{patient.patientId}}&reportId=0",
 		"icon": "icon-print",
 		"order": 20,
-		"requiredPrivilege": "Task: Print Patient Details"
+		"requiredPrivilege": "App: Print Patient Details"
 	}
 ]

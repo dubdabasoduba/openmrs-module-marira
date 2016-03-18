@@ -53,8 +53,12 @@
 		<description>Able to access marira specific functionality in openmrs 2.x</description>
 	</privilege>
 	<privilege>
-		<name>Task: Print Patient Details</name>
+		<name>App: Print Patient Details</name>
 		<description>Print patient deatils from the 2.X UI</description>
+	</privilege>
+	<privilege>
+		<name>App: Edit Visit</name>
+		<description>Able to access old patient search page to edit visit</description>
 	</privilege>
 
 	<!-- Required Global Properties 
