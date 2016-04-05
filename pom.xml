@@ -110,7 +110,7 @@
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>openhmis.commons-api</artifactId>
-				<version>3.1.2</version>
+				<version>3.2.0</version>
 				<type>jar</type>
 				<scope>provided</scope>
 			</dependency>
@@ -118,7 +118,7 @@
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>openhmis.commons-api</artifactId>
-				<version>3.1.2</version>
+				<version>3.2.0</version>
 				<type>test-jar</type>
 				<scope>test</scope>
 			</dependency>
@@ -126,7 +126,7 @@
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>openhmis.commons-tools</artifactId>
-				<version>3.1.0</version>
+				<version>3.2.0</version>
 				<type>jar</type>
 				<scope>provided</scope>
 			</dependency>
@@ -134,7 +134,7 @@
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>openhmis.commons-omod</artifactId>
-				<version>3.1.2</version>
+				<version>3.2.0</version>
 				<type>jar</type>
 				<scope>provided</scope>
 			</dependency>
@@ -252,7 +252,7 @@
 						<dependency>
 							<groupId>org.openmrs.module</groupId>
 							<artifactId>openhmis.commons-tools</artifactId>
-							<version>3.1.0</version>
+							<version>3.2.0</version>
 						</dependency>
 					</dependencies>
 				</plugin>
@@ -273,7 +273,7 @@
 						<dependency>
 							<groupId>org.openmrs.module</groupId>
 							<artifactId>openhmis.commons-tools</artifactId>
-							<version>3.1.0</version>
+							<version>3.2.0</version>
 						</dependency>
 					</dependencies>
 				</plugin>
