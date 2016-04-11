@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/marira.iml" filepath="$PROJECT_DIR$/marira.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api/marira-api.iml" filepath="$PROJECT_DIR$/api/marira-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/omod/marira-omod.iml" filepath="$PROJECT_DIR$/omod/marira-omod.iml" />
+      <module fileurl="file://$PROJECT_DIR$/omod_1.x/marira-omod_1.x.iml" filepath="$PROJECT_DIR$/omod_1.x/marira-omod_1.x.iml" />
+      <module fileurl="file://$PROJECT_DIR$/omod_2.x/marira-omod_2.x.iml" filepath="$PROJECT_DIR$/omod_2.x/marira-omod_2.x.iml" />
+    </modules>
+  </component>
+</project>
