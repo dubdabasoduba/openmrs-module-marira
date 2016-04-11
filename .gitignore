@@ -1,10 +1,50 @@
-/omod_1.x/marira-omod_1.x.iml
-/omod_1.x/target
-/omod/marira-omod.iml
-/omod/target
-/api/target
-/api/marira-api.iml
-/omod_2.x/target
-/omod_2.x/marira-omod_2.x.iml
-/marira.iml
-# Created by .ignore support plugin (hsz.mobi)
+# java specific
+*.class
+
+# Package File
+*.jar
+!lib/*
+*.war
+*.ear
+
+# eclipse conf file
+.settings
+.classpath
+.project
+.manager
+.scala_dependencies
+.cache
+
+# idea conf files
+# .idea
+*.iml
+*.ipr
+*.iws
+**/.idea/workspace.xml
+**/.idea/misc.xml
+**/.idea/libraries
+**/.idea/*datasources.*
+**/.idea/encodings.xml
+**/.idea/dictionaries/*
+
+# building
+target
+build
+null
+tmp
+temp
+dist
+test-output
+build.log
+.externalToolBuilders
+release.properties
+pom.xml.releaseBackup
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+.java-version
+/bin/
