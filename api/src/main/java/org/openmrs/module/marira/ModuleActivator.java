@@ -15,11 +15,9 @@ package org.openmrs.module.marira;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.api.context.Context;
 import org.openmrs.module.BaseModuleActivator;
-import org.openmrs.module.Module;
-import org.openmrs.module.ModuleFactory;
-import org.openmrs.module.marira.api.util.MariraConstants;
-import org.openmrs.module.web.WebModuleUtil;
+import org.openmrs.module.appframework.service.AppFrameworkService;
 
 /**
  * This class contains the logic that is run every time this module is either started or shutdown
@@ -32,7 +30,7 @@ public class ModuleActivator extends BaseModuleActivator {
 	 */
 	@Override
 	public void contextRefreshed() {
-		LOG.info("OpenHMIS Inventory Module refreshed");
+		LOG.info("Marira Module refreshed");
 	}
 
 	/**
@@ -40,7 +38,9 @@ public class ModuleActivator extends BaseModuleActivator {
 	 */
 	@Override
 	public void started() {
-		LOG.info("OpenHMIS Inventory Module started");
+		AppFrameworkService service = Context.getService(AppFrameworkService.class);
+		service.disableExtension("referenceapplication.realTime.simpleAdmission");
+		LOG.info("Marira Module started");
 	}
 
 	/**
@@ -48,7 +48,7 @@ public class ModuleActivator extends BaseModuleActivator {
 	 */
 	@Override
 	public void stopped() {
-		LOG.info("OpenHMIS Inventory Module stopped");
+		LOG.info("Marira Module stopped");
 	}
 
 }
