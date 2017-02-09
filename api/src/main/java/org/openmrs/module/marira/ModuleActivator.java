@@ -40,6 +40,7 @@ public class ModuleActivator extends BaseModuleActivator {
 	public void started() {
 		AppFrameworkService service = Context.getService(AppFrameworkService.class);
 		service.disableExtension("referenceapplication.realTime.simpleAdmission");
+		service.disableExtension("referenceapplication.realTime.simpleVisitNote");
 		LOG.info("Marira Module started");
 	}
 
