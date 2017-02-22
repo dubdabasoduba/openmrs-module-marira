@@ -27,6 +27,7 @@
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
 
 	<bean class="org.openmrs.module.marira.uiframework.UiConfigurationMarira" />
+
 	<context:component-scan base-package="org.openmrs.module.marira.web" />
  
 		

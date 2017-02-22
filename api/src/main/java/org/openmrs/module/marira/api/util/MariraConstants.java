@@ -12,4 +12,6 @@ public class MariraConstants {
 	public static final String MANAGE_MODULE_PAGE_EXTENSION_POINT_ID = "org.openmrs.module.marira.manage.module";
 
 	public static final String LANDING_PAGE_EXTENSION_POINT_ID = "org.openmrs.module.marira.landing";
+
+	public static final String APP_VIEW_VISIT_NOTE_ENCOUNTER = "App: View visit note encounter on the Patient Search";
 }
