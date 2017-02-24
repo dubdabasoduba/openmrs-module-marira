@@ -72,6 +72,11 @@
 		<description>Show the visit note encounter on the patient search fragment</description>
 	</globalProperty>
 
+	<globalProperty>
+		<property>${project.parent.artifactId}.visitNoteEncounterTypeUuid</property>
+		<description>Visit note encounter type uuid that should be used on the patient search</description>
+	</globalProperty>
+
 	<!-- Required Global Properties
 	<globalProperty>
 		<property>@MODULE_ID@.someProperty</property>

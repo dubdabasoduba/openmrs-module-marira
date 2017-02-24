@@ -1,10 +1,7 @@
 package org.openmrs.module.marira.fragment;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.openmrs.ui.framework.fragment.FragmentRequest;
 import org.openmrs.ui.framework.fragment.FragmentRequestMapper;
-import org.openmrs.ui.framework.page.PageRequest;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,8 +9,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class PatientSearchFragmentRequestMapper implements FragmentRequestMapper {
-
-	protected final Log LOGGER = LogFactory.getLog(getClass());
 
 	/**
 	 * Implementations should call {@link FragmentRequest#setProviderNameOverride(String)} and
@@ -27,7 +22,6 @@ public class PatientSearchFragmentRequestMapper implements FragmentRequestMapper
 			if (request.getFragmentId().equals("patientSearchFragment")) {
 				request.setProviderNameOverride("marira");
 				request.setFragmentIdOverride("mariraPatientSearch");
-				LOGGER.info(request.toString());
 				return true;
 			}
 		}

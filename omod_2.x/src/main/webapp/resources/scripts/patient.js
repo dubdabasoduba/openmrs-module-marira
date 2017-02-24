@@ -28,47 +28,49 @@ visitOperations.getEncounterDetails = function(patientUuid, sectionId, encounter
     params['encounterId'] = encounterId;
     emr.getFragmentActionWithCallback('coreapps', 'visit/visitDetails', 'getEncounterDetails', params,
         function(data) {
-            if(data != null){
-                var formatDiagnosis = '<p>';
-                var diagnoses = [];
-                data.diagnoses.forEach(function (diagnosis, i){
-                    if(diagnoses.indexOf(diagnosis.question) == -1){
-                        formatDiagnosis += '<b>' + diagnosis.question + ':</b> ';
-                        diagnoses.push(diagnosis.question);
-                    }
+            if(data == null){
+                return;
+            }
 
-                    formatDiagnosis += diagnosis.answer;
-                    if(i + 1 < data.diagnoses.length){
+            var formatDiagnosis = '<p>';
+            var diagnoses = [];
+            data.diagnoses.forEach(function (diagnosis, i){
+                if(diagnoses.indexOf(diagnosis.question) == -1){
+                    formatDiagnosis += '<b>' + diagnosis.question + ':</b> ';
+                    diagnoses.push(diagnosis.question);
+                }
+
+                formatDiagnosis += diagnosis.answer;
+                if(i + 1 < data.diagnoses.length){
+                    formatDiagnosis += '<br />';
+                }
+            });
+
+            data.observations.forEach(function (observation){
+                if(observation.question == 'Text of encounter note'){
+                    var answer = observation.answer;
+                    answer = answer.replace(/\n/g, ' ');
+
+                    if(answer.indexOf(':') == -1){
                         formatDiagnosis += '<br />';
                     }
-                });
 
-                data.observations.forEach(function (observation){
-                    if(observation.question == 'Text of encounter note'){
-                        var answer = observation.answer;
-                        answer = answer.replace(/\n/g, ' ');
-
-                        if(answer.indexOf(':') == -1){
-                            formatDiagnosis += '<br />';
-                        }
-
-                        answer.split(' ').forEach(function(word, i){
-                            if(word.indexOf(':') > 0){
-                                formatDiagnosis += '<br /><b>' + visitOperations.capitalizeFirstLetter(word) + '</b>';
-                            } else {
-                                if(i == 0){
-                                    formatDiagnosis += '<br />';
-                                }
-
-                                formatDiagnosis += word + ' ';
+                    answer.split(' ').forEach(function(word, i){
+                        if(word.indexOf(':') > 0){
+                            formatDiagnosis += '<br /><b>' + visitOperations.capitalizeFirstLetter(word) + '</b>';
+                        } else {
+                            if(i == 0){
+                                formatDiagnosis += '<br />';
                             }
-                        });
-                    }
-                });
-                formatDiagnosis += '</p>';
 
-                jQuery("#" + sectionId).html(formatDiagnosis);
-            }
+                            formatDiagnosis += word + ' ';
+                        }
+                    });
+                }
+            });
+            formatDiagnosis += '</p>';
+
+            jQuery("#" + sectionId).html(formatDiagnosis);
         }
     );
 }

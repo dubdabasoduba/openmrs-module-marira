@@ -7,6 +7,7 @@ import org.openmrs.Visit;
 import org.openmrs.api.PatientService;
 import org.openmrs.api.VisitService;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.marira.api.util.MariraConstants;
 import org.openmrs.ui.framework.SimpleObject;
 import org.openmrs.ui.framework.annotation.SpringBean;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,8 +40,11 @@ public class MariraPatientSearchFragmentController {
 				List<Visit> activeVisits = visitService.getActiveVisitsByPatient(patient);
 				if (activeVisits.size() > 0) {
 					Set<Encounter> encounters = activeVisits.get(0).getEncounters();
+					String visitNoteEncounterTypeUuid = getVisitNoteEncounterTypeUuid();
 					for (Encounter encounter : encounters) {
-						if (encounter.getEncounterType().getName().equalsIgnoreCase("visit note")) {
+						if (StringUtils.isNotEmpty(visitNoteEncounterTypeUuid)
+						        && encounter.getEncounterType()
+						                .getUuid().equalsIgnoreCase(visitNoteEncounterTypeUuid)) {
 							return SimpleObject.create("encounterId", encounter.getId());
 						}
 					}
@@ -54,9 +58,20 @@ public class MariraPatientSearchFragmentController {
 	public boolean showVisitNoteEncounter() {
 		Boolean result = false;
 		String property = Context.getAdministrationService().getGlobalProperty(
-		    "marira.showVisitNoteEncounter");
-		if (!org.apache.commons.lang3.StringUtils.isEmpty(property)) {
+		    MariraConstants.SHOW_VISIT_NOTE_ENCOUNTER);
+		if (!StringUtils.isEmpty(property)) {
 			result = Boolean.parseBoolean(property);
+		}
+
+		return result;
+	}
+
+	private String getVisitNoteEncounterTypeUuid() {
+		String result = null;
+		String property = Context.getAdministrationService().getGlobalProperty(
+		    MariraConstants.VISIT_NOTE_ENCOUNTER_TYPE_UUID);
+		if (!StringUtils.isEmpty(property)) {
+			result = property;
 		}
 
 		return result;
