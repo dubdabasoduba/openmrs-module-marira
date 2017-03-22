@@ -32,49 +32,25 @@ visitOperations.getEncounterDetails = function(patientUuid, sectionId, encounter
                 return;
             }
 
-            var formatDiagnosis = '<p>';
+            var formatDiagnosis = '';
             var diagnoses = [];
             data.diagnoses.forEach(function (diagnosis, i){
                 if(diagnoses.indexOf(diagnosis.question) == -1){
-                    formatDiagnosis += '<b>' + diagnosis.question + ':</b> ';
+                    formatDiagnosis += '<span><b>' + diagnosis.question + ':</b> ';
                     diagnoses.push(diagnosis.question);
                 }
 
-                formatDiagnosis += diagnosis.answer;
-                if(i + 1 < data.diagnoses.length){
-                    formatDiagnosis += '<br />';
-                }
+                formatDiagnosis += diagnosis.answer + '</span>';
             });
 
             data.observations.forEach(function (observation){
-                if(observation.question == 'Text of encounter note'){
-                    var answer = observation.answer;
-                    answer = answer.replace(/\n/g, ' ');
-
-                    if(answer.indexOf(':') == -1){
-                        formatDiagnosis += '<br />';
-                    }
-
-                    answer.split(' ').forEach(function(word, i){
-                        if(word.indexOf(':') > 0){
-                            formatDiagnosis += '<br /><b>' + visitOperations.capitalizeFirstLetter(word) + '</b>';
-                        } else {
-                            if(i == 0){
-                                formatDiagnosis += '<br />';
-                            }
-
-                            formatDiagnosis += word + ' ';
-                        }
-                    });
-                }
+                formatDiagnosis += '<span><b>' + observation.question + ':</b> ';
+                formatDiagnosis += observation.answer + '</span>';
             });
-            formatDiagnosis += '</p>';
+
+            formatDiagnosis = formatDiagnosis.replace(/\n/ig, '<br />');
 
             jQuery("#" + sectionId).html(formatDiagnosis);
         }
     );
 }
-
-visitOperations.capitalizeFirstLetter = function(word) {
-    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-};
