@@ -1,0 +1,15 @@
+#diagnosis{
+    font-size: 14px;
+    position:relative;
+    word-break: break-all;
+}
+#diagnosis p{
+    margin-bottom: 0px;
+}
+#diagnosis span{
+    display: block;
+    line-height: 2;
+}
+ul.patient-details-layout li{
+    padding: 0px !important;
+}

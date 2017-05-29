@@ -16,7 +16,7 @@
 
 	<aware_of_modules>
 		<aware_of_module version="2.8">org.openmrs.module.idgen</aware_of_module>
-		<aware_of_module version="${uiframeworkVersion}">org.openmrs.module.uiframework</aware_of_module>
+		<aware_of_module version="3.9">org.openmrs.module.uiframework</aware_of_module>
 		<aware_of_module version="${appframeworkVersion}">org.openmrs.module.appframework</aware_of_module>
 		<aware_of_module version="${providerManagementVersion}">org.openmrs.module.providermanagement</aware_of_module>
 		<aware_of_module version="1.7">org.openmrs.module.uicommons</aware_of_module>
@@ -28,6 +28,7 @@
 		<require_module version="2.3">org.openmrs.module.openhmis.backboneforms</require_module>
 		<require_module version="1.5.6">org.openmrs.module.jasperreport</require_module>
 		<require_module version="2.6">org.openmrs.module.appframework</require_module>
+		<require_module version="3.9">org.openmrs.module.uiframework</require_module>
 	</require_modules>
 
 	<activator>${project.parent.groupId}.${project.parent.artifactId}.ModuleActivator</activator>
@@ -45,8 +46,7 @@
 		<class>@MODULE_PACKAGE@.advice.DuplicateFormAdvisor</class>
 	</advice>
 	 /AOP -->
-	
-	
+
 	<!-- Required Privileges -->
 	<!--App Privileges for openmrs 2.0x-->
 	<privilege>
@@ -61,8 +61,38 @@
 		<name>App: Edit Visit</name>
 		<description>Able to access old patient search page to edit visit</description>
 	</privilege>
+	<privilege>
+		<name>App: View visit note encounter on the Patient Search</name>
+		<description>Able to view visit note encounter on the patient search fragment</description>
+	</privilege>
+	<privilege>
+		<name>App: View lab prescription encounter on the Patient Search</name>
+		<description>Able to view lab prescription encounter on the patient search fragment</description>
+	</privilege>
 
-	<!-- Required Global Properties 
+	<globalProperty>
+		<property>${project.parent.artifactId}.showVisitNoteEncounter</property>
+		<defaultValue>false</defaultValue>
+		<description>Show the visit note encounter on the patient search fragment</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>${project.parent.artifactId}.visitNoteEncounterTypeUuid</property>
+		<description>Visit note encounter type uuid that should be used on the patient search</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>${project.parent.artifactId}.showLabPrescriptionEncounter</property>
+		<defaultValue>false</defaultValue>
+		<description>Show the lab prescription encounter on the patient search fragment</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>${project.parent.artifactId}.labPrescriptionEncounterTypeUuid</property>
+		<description>Lab Prescription encounter type uuid that should be used on the patient search</description>
+	</globalProperty>
+
+	<!-- Required Global Properties
 	<globalProperty>
 		<property>@MODULE_ID@.someProperty</property>
 		<defaultValue></defaultValue>
