@@ -65,6 +65,10 @@
 		<name>App: View visit note encounter on the Patient Search</name>
 		<description>Able to view visit note encounter on the patient search fragment</description>
 	</privilege>
+	<privilege>
+		<name>App: View lab prescription encounter on the Patient Search</name>
+		<description>Able to view lab prescription encounter on the patient search fragment</description>
+	</privilege>
 
 	<globalProperty>
 		<property>${project.parent.artifactId}.showVisitNoteEncounter</property>
@@ -75,6 +79,17 @@
 	<globalProperty>
 		<property>${project.parent.artifactId}.visitNoteEncounterTypeUuid</property>
 		<description>Visit note encounter type uuid that should be used on the patient search</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>${project.parent.artifactId}.showLabPrescriptionEncounter</property>
+		<defaultValue>false</defaultValue>
+		<description>Show the lab prescription encounter on the patient search fragment</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>${project.parent.artifactId}.labPrescriptionEncounterTypeUuid</property>
+		<description>Lab Prescription encounter type uuid that should be used on the patient search</description>
 	</globalProperty>
 
 	<!-- Required Global Properties

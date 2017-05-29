@@ -43,6 +43,11 @@
             <span id="diagnosis"></span>
         <% } %>
 
+        <!-- Display lab prescription encounter diagnoses -->
+        <% if (context.hasPrivilege("App: View lab prescription encounter on the Patient Search")) { %>
+        <span id="lab-prescription"></span>
+        <% } %>
+
         <span ng-show="${changePatient}">
             <input type="button" class="btn gray-button"
                    value="${ui.message('openhmis.commons.general.changePatient')}"
@@ -96,8 +101,12 @@
             <tr class="clickable-tr" pagination-id="__patients"
                 dir-paginate="patient in patients | itemsPerPage: limit"
                 total-items="totalNumOfResults" current-page="currentPage"
-                ng-click="selectPatient(patient); getVisitNoteEncounter(patient.uuid, 'diagnosis')"
-                ng-enter="selectPatient(patient); getVisitNoteEncounter(patient.uuid, 'diagnosis')"
+                ng-click="selectPatient(patient);
+                    getVisitNoteEncounter(patient.uuid, 'diagnosis', 'visitNote');
+                    getVisitNoteEncounter(patient.uuid, 'lab-prescription', 'labPrescription')"
+                ng-enter="selectPatient(patient);
+                    getVisitNoteEncounter(patient.uuid, 'diagnosis', 'visitNote');
+                    getVisitNoteEncounter(patient.uuid, 'lab-prescription', 'labPrescription')"
                 tabindex="0">
                 <td>{{patient.patientIdentifier.identifier}}</td>
                 <td>{{patient.person.personName.givenName}}</td>

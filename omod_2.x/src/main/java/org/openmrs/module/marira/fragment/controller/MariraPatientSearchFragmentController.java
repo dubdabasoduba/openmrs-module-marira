@@ -32,6 +32,7 @@ public class MariraPatientSearchFragmentController {
 	 * @return JSON
 	 */
 	public SimpleObject getEncounter(@RequestParam("patientUuid") String patientUuid,
+	        @RequestParam("encounterType") String encounterType,
 	        @SpringBean("patientService") PatientService patientService,
 	        @SpringBean("visitService") VisitService visitService) {
 		if (StringUtils.isNotEmpty(patientUuid)) {
@@ -40,11 +41,11 @@ public class MariraPatientSearchFragmentController {
 				List<Visit> activeVisits = visitService.getActiveVisitsByPatient(patient);
 				if (activeVisits.size() > 0) {
 					Set<Encounter> encounters = activeVisits.get(0).getEncounters();
-					String visitNoteEncounterTypeUuid = getVisitNoteEncounterTypeUuid();
+					String encounterTypeUuid = getEncounterTypeUuid(encounterType);
 					for (Encounter encounter : encounters) {
-						if (StringUtils.isNotEmpty(visitNoteEncounterTypeUuid)
+						if (StringUtils.isNotEmpty(encounterTypeUuid)
 						        && encounter.getEncounterType()
-						                .getUuid().equalsIgnoreCase(visitNoteEncounterTypeUuid)) {
+						                .getUuid().equalsIgnoreCase(encounterTypeUuid)) {
 							return SimpleObject.create("encounterId", encounter.getId());
 						}
 					}
@@ -55,10 +56,12 @@ public class MariraPatientSearchFragmentController {
 		return null;
 	}
 
-	public boolean showVisitNoteEncounter() {
+	public boolean showEncounter(
+	        @RequestParam("encounterType") String encounterType) {
 		Boolean result = false;
 		String property = Context.getAdministrationService().getGlobalProperty(
-		    MariraConstants.SHOW_VISIT_NOTE_ENCOUNTER);
+		    encounterType.equalsIgnoreCase("visitNote") ? MariraConstants.SHOW_VISIT_NOTE_ENCOUNTER
+		            : MariraConstants.SHOW_LAB_PRESCRIPTION_ENCOUNTER);
 		if (!StringUtils.isEmpty(property)) {
 			result = Boolean.parseBoolean(property);
 		}
@@ -66,10 +69,11 @@ public class MariraPatientSearchFragmentController {
 		return result;
 	}
 
-	private String getVisitNoteEncounterTypeUuid() {
+	private String getEncounterTypeUuid(String encounterType) {
 		String result = null;
 		String property = Context.getAdministrationService().getGlobalProperty(
-		    MariraConstants.VISIT_NOTE_ENCOUNTER_TYPE_UUID);
+		    encounterType.equalsIgnoreCase("visitNote") ? MariraConstants.VISIT_NOTE_ENCOUNTER_TYPE_UUID
+		            : MariraConstants.LAB_PRESCRIPTION_ENCOUNTER_TYPE_UUID);
 		if (!StringUtils.isEmpty(property)) {
 			result = property;
 		}
