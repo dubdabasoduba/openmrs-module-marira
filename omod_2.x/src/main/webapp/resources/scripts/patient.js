@@ -20,13 +20,14 @@ visitOperations.getEncounter = function(patientUuid, sectionId, encounterType){
     emr.getFragmentActionWithCallback('marira', 'mariraPatientSearch', 'getEncounter', params,
         function(data){
             if(data != null && data.encounterId != null){
-                visitOperations.getEncounterDetails(patientUuid, sectionId, data.encounterId);
+                visitOperations.getEncounterDetails(patientUuid, sectionId,
+                    data.encounterId, data.provider);
             }
         }
     );
 }
 
-visitOperations.getEncounterDetails = function(patientUuid, sectionId, encounterId){
+visitOperations.getEncounterDetails = function(patientUuid, sectionId, encounterId, provider){
     var params = [];
     params['encounterId'] = encounterId;
     emr.getFragmentActionWithCallback('coreapps', 'visit/visitDetails', 'getEncounterDetails', params,
@@ -51,9 +52,9 @@ visitOperations.getEncounterDetails = function(patientUuid, sectionId, encounter
                 formatDiagnosis += "<div style='word-wrap: break-word;width:900px'><b>";
                 formatDiagnosis += observation.question + ":</b> ";
                 formatDiagnosis += observation.answer + "</div>";
-                formatDiagnosis += "<br />";
             });
 
+            formatDiagnosis += "<b>Provider:</b> " + provider + "<br />";
             formatDiagnosis = formatDiagnosis.replace(/\n/ig, '<br />');
 
             jQuery("#" + sectionId).html(formatDiagnosis);
