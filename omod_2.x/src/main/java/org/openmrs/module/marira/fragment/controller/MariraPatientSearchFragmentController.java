@@ -46,7 +46,8 @@ public class MariraPatientSearchFragmentController {
 						if (StringUtils.isNotEmpty(encounterTypeUuid)
 						        && encounter.getEncounterType()
 						                .getUuid().equalsIgnoreCase(encounterTypeUuid)) {
-							return SimpleObject.create("encounterId", encounter.getId());
+							return SimpleObject.create("encounterId", encounter.getId(),
+							    "provider", encounter.getProvider().getPersonName().getFullName());
 						}
 					}
 				}
